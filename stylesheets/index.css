@@ -1,11 +1,10 @@
-.hero{
-    display: flex;
+.hero {
+    display: grid;
+    grid-template-columns: 60% 1fr;
 }
 .hero-img-wrapper {
-    width: 60%;
     height: 100vh;
     position: relative;
-    flex-shrink: 0
 }
 .hero-img-wrapper img {
     width: 100%;
@@ -19,7 +18,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.1));
     pointer-events: none;
 }
 .hero-text{
@@ -40,14 +39,18 @@ h1 span{
     color: #000;
 }
 #span-2{
-    margin-left: 100px;
+    margin-left: 10%;
 }
 .hero p{
     width: 80%;
     justify-self: center;
     font-size: 1.125rem;
 }
-
+@media(max-width:768px){
+    .hero{
+        grid-template-columns: 33% 1fr;
+    }
+}
 /* SPACING */
 .spacing {
     overflow: hidden;
@@ -79,6 +82,8 @@ h1 span{
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+/* MENU */
 .menu-overlay {
     z-index: 1;
     position: fixed;
@@ -112,6 +117,24 @@ h1 span{
     object-fit: cover;
     filter: blur(3px);
 }
+.menu-left .menu-left-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translateX(-25%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+.menu-left-wrapper a{
+    font-size: 2rem;
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    transition: all 0.3s ease;
+}
+.menu-left-wrapper a:hover{
+    color: #b16434;
+}
 .menu-right {
     background-color: #e5e8e2;
     height: 100%;
@@ -121,4 +144,40 @@ h1 span{
 }
 .menu-overlay.active .menu-right {
     transform: translateX(0);
+}
+.menu-right-wrapper{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+.menu-right-wrapper #menu-logo{
+    max-width: 300px;
+    margin-top: -100px;
+}
+.menu-icons{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    padding-top: 10%;
+}
+.menu-icons img {
+    max-width: 30px;
+}
+@media(max-width:768px){
+    .menu-right{
+        display: none;
+    }
+    .menu-left{
+        width: 100%;
+    }
+    .menu-left .menu-left-wrapper{
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
 }
