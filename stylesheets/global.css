@@ -8,6 +8,18 @@
 body {
     background-color: #e5e8e2;
 }
+html, body{
+  overflow-x: hidden;
+}
+h1, h2, h3{
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
 
 /* NAV BAR */
 nav{
