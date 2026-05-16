@@ -30,3 +30,18 @@ arrows.addEventListener('click', (e) => {
     track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
   }
 });
+
+const banner = document.querySelector('.banner-img-wrapper');
+const bannerImg = banner.querySelector('img');
+
+window.addEventListener('scroll', () => {
+  const rect = banner.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.bottom > 0 && rect.top < windowHeight) {
+    const progress = (windowHeight - rect.top) / (windowHeight + banner.offsetHeight);
+    const imgExtraHeight = bannerImg.offsetHeight - banner.offsetHeight;
+    const yOffset = -(progress * imgExtraHeight);
+    bannerImg.style.transform = `translateY(${yOffset}px)`;
+  }
+});

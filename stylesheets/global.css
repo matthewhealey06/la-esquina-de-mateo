@@ -53,6 +53,11 @@ nav svg{
     font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     font-size: 1.2rem;
 }
+@media(max-width:768px){
+  nav img{
+    max-height: 70px;
+  }
+}
 
 /* --- FADE IN --- */
 .fade-in {

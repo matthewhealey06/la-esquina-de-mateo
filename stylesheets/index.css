@@ -216,7 +216,6 @@ h2{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 150px;
 }
 .timeline-years p{
     font-size: clamp(2.5rem, 4vw, 4.5rem);
@@ -292,4 +291,35 @@ h2{
 .story-card p{
     width: 90%;
     justify-self: center;
+}
+@media(max-width:768px){
+    .story-img-wrapper{
+        width: 55vw;
+    }
+    .timeline-arrows{
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10%;
+    }
+}
+
+.banner{
+    display: flex;
+    justify-content: center;
+}
+.banner-img-wrapper {
+    width: 90%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 30px;
+    position: relative;
+}
+.banner-img-wrapper img {
+    width: 100%;
+    height: 150%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
