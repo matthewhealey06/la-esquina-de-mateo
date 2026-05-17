@@ -45,3 +45,19 @@ window.addEventListener('scroll', () => {
     bannerImg.style.transform = `translateY(${yOffset}px)`;
   }
 });
+
+const dishes = document.querySelector('.signature-dishes');
+const leftDish = document.querySelector('.dish-left');
+const rightDish = document.querySelector('.dish-right');
+
+window.addEventListener('scroll', () => {
+  const rect = dishes.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.bottom > 0 && rect.top < windowHeight) {
+    const progress = (windowHeight - rect.top) / (windowHeight + dishes.offsetHeight);
+    const offset = progress * 120;
+    leftDish.style.transform = `translateY(-${offset}px)`;
+    rightDish.style.transform = `translateY(${offset}px)`;
+  }
+});
