@@ -1,3 +1,22 @@
+const lenis = new Lenis();
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+lenis.on("scroll", () => {});
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    lenis.scrollTo(target, { duration: 2 });
+  });
+});
+
+
 const menuButton = document.querySelector(".nav-right");
 const menuOverlay = document.querySelector(".menu-overlay");
 
@@ -7,57 +26,59 @@ menuButton.addEventListener("click", () => {
   document.documentElement.classList.toggle("no-scroll");
 });
 
-const arrows = document.querySelector('.timeline-arrows');
-const dots = document.querySelectorAll('.dot');
-const years = document.querySelectorAll('.timeline-years p');
+const arrows = document.querySelector(".timeline-arrows");
+const dots = document.querySelectorAll(".dot");
+const years = document.querySelectorAll(".timeline-years p");
 let currentIndex = 0;
 const totalSlides = 3;
-const track = document.querySelector('.story-wrapper');
+const track = document.querySelector(".story-wrapper");
 
-arrows.addEventListener('click', (e) => {
-  if (e.target.tagName === 'BUTTON') {
+arrows.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
     const direction = e.target.dataset.direction;
-    if (direction === 'right' && currentIndex < totalSlides - 1) {
+    if (direction === "right" && currentIndex < totalSlides - 1) {
       currentIndex++;
-    } else if (direction === 'left' && currentIndex > 0) {
+    } else if (direction === "left" && currentIndex > 0) {
       currentIndex--;
     }
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[currentIndex].classList.add('active');
-    years.forEach(year => year.classList.remove('active'));
-    years[currentIndex].classList.add('active');
-    const cardWidth = document.querySelector('.story-card').offsetWidth + 50;
+    dots.forEach((dot) => dot.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+    years.forEach((year) => year.classList.remove("active"));
+    years[currentIndex].classList.add("active");
+    const cardWidth = document.querySelector(".story-card").offsetWidth + 50;
     track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
   }
 });
 
-const banner = document.querySelector('.banner-img-wrapper');
-const bannerImg = banner.querySelector('img');
+const banner = document.querySelector(".banner-img-wrapper");
+const bannerImg = banner.querySelector("img");
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   const rect = banner.getBoundingClientRect();
   const windowHeight = window.innerHeight;
 
   if (rect.bottom > 0 && rect.top < windowHeight) {
-    const progress = (windowHeight - rect.top) / (windowHeight + banner.offsetHeight);
+    const progress =
+      (windowHeight - rect.top) / (windowHeight + banner.offsetHeight);
     const imgExtraHeight = bannerImg.offsetHeight - banner.offsetHeight;
     const yOffset = -(progress * imgExtraHeight);
     bannerImg.style.transform = `translateY(${yOffset}px)`;
   }
 });
 
-const dishes = document.getElementById('signature-dishes');
-const leftDish = document.querySelector('.dish-left');
-const rightDish = document.querySelector('.dish-right');
+const dishes = document.getElementById("signature-dishes");
+const leftDish = document.querySelector(".dish-left");
+const rightDish = document.querySelector(".dish-right");
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   if (window.innerWidth <= 768) return;
 
   const rect = dishes.getBoundingClientRect();
   const windowHeight = window.innerHeight;
 
   if (rect.bottom > 0 && rect.top < windowHeight) {
-    const progress = (windowHeight - rect.top) / (windowHeight + dishes.offsetHeight);
+    const progress =
+      (windowHeight - rect.top) / (windowHeight + dishes.offsetHeight);
     const offset = progress * 120;
     leftDish.style.transform = `translateY(-${offset}px)`;
     rightDish.style.transform = `translateY(${offset}px)`;
