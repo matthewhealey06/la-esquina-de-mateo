@@ -51,6 +51,8 @@ const leftDish = document.querySelector('.dish-left');
 const rightDish = document.querySelector('.dish-right');
 
 window.addEventListener('scroll', () => {
+  if (window.innerWidth <= 768) return;
+
   const rect = dishes.getBoundingClientRect();
   const windowHeight = window.innerHeight;
 

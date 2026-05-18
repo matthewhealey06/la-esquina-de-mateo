@@ -293,6 +293,11 @@ h2{
     width: 90%;
     justify-self: center;
 }
+@media(max-width:1024px){
+    .story-img-wrapper{
+        width: 40vw;
+    }
+}
 @media(max-width:768px){
     .story-img-wrapper{
         width: 55vw;
@@ -302,6 +307,9 @@ h2{
         left: 50%;
         transform: translateX(-50%);
         top: 10%;
+    }
+    .story-bottom{
+        padding-bottom: 150px;
     }
 }
 
@@ -363,6 +371,17 @@ h2{
     text-align: center;
     font-size: 1.4rem;
 }
+@media(max-width:768px){
+    .signature-dishes{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .dish-wrapper{
+        width: 90%;
+        height: 40vh;
+        align-self: center;
+    }
+}
 
 /* RESERVATION SECTION */
 .image-spacer{
@@ -378,4 +397,22 @@ h2{
     margin-top: -15%;
     background-color: #484644;
     height: 100vh;
+}
+@media(max-width:1024px){
+    .reservation{
+        margin-top: -30%;
+    }
+}
+@media(max-width:768px){
+    .image-spacer{
+        width: 100%;
+        justify-content: center;
+    }
+    .image-spacer img{
+        width: 90%;
+        height: 90%;
+    }
+    .reservation{
+        margin-top: -40%;
+    }
 }
