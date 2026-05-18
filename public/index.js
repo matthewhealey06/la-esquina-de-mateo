@@ -1,22 +1,3 @@
-const lenis = new Lenis();
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
-lenis.on("scroll", () => {});
-
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    lenis.scrollTo(target, { duration: 2 });
-  });
-});
-
-
 const menuButton = document.querySelector(".nav-right");
 const menuOverlay = document.querySelector(".menu-overlay");
 
