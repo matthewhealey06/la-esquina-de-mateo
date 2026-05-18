@@ -46,7 +46,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-const dishes = document.querySelector('.signature-dishes');
+const dishes = document.getElementById('signature-dishes');
 const leftDish = document.querySelector('.dish-left');
 const rightDish = document.querySelector('.dish-right');
 
