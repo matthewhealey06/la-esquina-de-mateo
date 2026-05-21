@@ -38,6 +38,7 @@ h1 span {
   color: #6b522d;
   font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }
+#delicioso{ font-style: italic; color: #6b522d;}
 #span-1 {
   margin-left: -20%;
   color: #000;
@@ -284,7 +285,7 @@ h2 {
   justify-content: space-between;
   gap: 50px;
   padding-top: 50px;
-  transition: transform 0.6s ease;
+  transition: all 0.6s ease;
 }
 .story-img-wrapper {
   width: 30vw;
