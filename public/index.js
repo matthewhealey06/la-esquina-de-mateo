@@ -65,3 +65,119 @@ window.addEventListener("scroll", () => {
     rightDish.style.transform = `translateY(${offset}px)`;
   }
 });
+
+const today = new Date();
+const endDate = new Date();
+endDate.setMonth(endDate.getMonth() + 3);
+
+const dates = [];
+
+while (today < endDate) {
+  dates.push(
+    today.toLocaleDateString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+    }),
+  );
+  today.setDate(today.getDate() + 1);
+}
+
+const dateSelect = document.getElementById("date-select");
+const dateLabel = document.querySelector("#date-select span");
+const dateOptions = document.querySelector("#date-select .dropdown-options");
+
+dates.forEach((date) => {
+  const option = document.createElement("span");
+  option.textContent = date;
+  option.addEventListener("click", function (e) {
+    e.stopPropagation();
+    dateLabel.textContent = date;
+    dateOptions.style.display = "none";
+  });
+  dateOptions.appendChild(option);
+});
+
+dateSelect.addEventListener("click", function () {
+  dateOptions.style.display =
+    dateOptions.style.display === "block" ? "none" : "block";
+});
+
+const timeSelect = document.getElementById("time-select");
+const timeLabel = document.querySelector("#time-select span");
+const timeOptions = document.querySelector("#time-select .dropdown-options");
+
+for (let hour = 12; hour <= 21; hour++) {
+  const slots = hour === 21 ? ["00", "30"] : ["00", "30"];
+  slots.forEach((min) => {
+    const time = `${hour}:${min}`;
+    const option = document.createElement("span");
+    option.textContent = time;
+    option.addEventListener("click", function (e) {
+      e.stopPropagation();
+      timeLabel.textContent = time;
+      timeOptions.style.display = "none";
+    });
+    timeOptions.appendChild(option);
+  });
+}
+
+timeSelect.addEventListener("click", function () {
+  timeOptions.style.display =
+    timeOptions.style.display === "block" ? "none" : "block";
+});
+
+const partySelect = document.getElementById("party-select");
+const partyLabel = document.querySelector("#party-select span");
+const partyOptions = document.querySelector("#party-select .dropdown-options");
+
+for (let party = 1; party <= 8; party++) {
+  const option = document.createElement("span");
+  option.textContent = party;
+  option.addEventListener("click", function (e) {
+    e.stopPropagation();
+    partyLabel.textContent = party;
+    partyOptions.style.display = "none";
+  });
+  partyOptions.appendChild(option);
+}
+
+partySelect.addEventListener("click", function () {
+  partyOptions.style.display =
+    partyOptions.style.display === "block" ? "none" : "block";
+});
+document.addEventListener("click", function (e) {
+  if (!e.target.closest("#date-select")) {
+    dateOptions.style.display = "none";
+  }
+  if (!e.target.closest("#time-select")) {
+    timeOptions.style.display = "none";
+  }
+  if (!e.target.closest("#party-select")) {
+    partyOptions.style.display = "none";
+  }
+});
+const reserveBtn = document.getElementById("reserveBtn");
+
+reserveBtn.addEventListener("click", function () {
+  if (
+    dateLabel.textContent === "Date" ||
+    timeLabel.textContent === "Time" ||
+    partyLabel.textContent === "Party Size"
+  ) {
+    reserveBtn.textContent = "Please fill all fields";
+    setTimeout(() => {
+      reserveBtn.textContent = "RESERVE NOW";
+    }, 3000);
+    return;
+  }
+
+  reserveBtn.textContent = "Reserved!";
+  dateLabel.textContent = "Date";
+  timeLabel.textContent = "Time";
+  partyLabel.textContent = "Party Size";
+
+  setTimeout(() => {
+    reserveBtn.textContent = "RESERVE NOW";
+  }, 5000);
+});
