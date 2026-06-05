@@ -87,3 +87,48 @@ nav svg {
   opacity: 1;
   transform: translate(0);
 }
+
+/* --- COOKIES ---*/
+#cookie-banner{
+  width: 100vw;
+  height: 75px;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  background-color: #484644;
+  gap: 20%;
+  display: none;
+}
+.cookie-left{
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.cookie-right{
+  display: flex;
+  height: 100%;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+#cookie-banner img{
+  height: 30%;
+}
+#cookie-banner p, #cookie-banner button{
+  color: white;
+}
+#reject{
+  background-color: #63615e;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+#accept{
+  background-color: #b16434;
+  padding: 10px 20px;
+  border-radius: 20px;
+}

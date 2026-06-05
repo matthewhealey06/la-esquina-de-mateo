@@ -68,6 +68,7 @@ window.addEventListener("scroll", () => {
 
 const today = new Date();
 const endDate = new Date();
+today.setDate(today.getDate() + 1);
 endDate.setMonth(endDate.getMonth() + 3);
 
 const dates = [];
